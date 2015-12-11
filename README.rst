@@ -46,3 +46,9 @@ Traceback (most recent call last):
 TypeError: 'LazyList' object does not support item assignment
 
 Distributed under LGPLv3 or higher.
+
+Todos
+-----
+
+- ``LazySet``
+- ``LazyMap``
