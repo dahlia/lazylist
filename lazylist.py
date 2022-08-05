@@ -1,10 +1,16 @@
 import collections
 
+try:
+    from collections import Sequence
+except ImportError:
+    # >=Python 3.10
+    from collections.abc import Sequence
+
 __all__ = 'LazyList',
 __version__ = '0.9.1'
 
 
-class LazyList(collections.Sequence):
+class LazyList(Sequence):
     """An immutable proxy sequence to a given ``view_function``."""
 
     def __init__(self, view_function):
@@ -15,7 +21,7 @@ class LazyList(collections.Sequence):
     @property
     def raw_value(self):
         result = self.view_function()
-        if not isinstance(result, collections.Sequence):
+        if not isinstance(result, Sequence):
             raise TypeError(repr(result) + ' is not a sequence')
         return result
 
